@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Adelaide Health Simulation</title>
+    <meta name="description" content="Connect with our digital and social platforms.">
+    <style>
+        @font-face {
+            font-family: "MADE Evolve Sans";
+            font-weight: 100;
+            src: url("/src/fonts/made_evolve_sans/MADE Evolve Sans Thin.otf") format("opentype");
+        }
+        @font-face {
+            font-family: "MADE Evolve Sans";
+            font-weight: 300;
+            src: url("/src/fonts/made_evolve_sans/MADE Evolve Sans Light.otf") format("opentype");
+        }
+        @font-face {
+            font-family: "MADE Evolve Sans";
+            font-weight: 400;
+            src: url("/src/fonts/made_evolve_sans/MADE Evolve Sans Regular.otf") format("opentype");
+        }
+        @font-face {
+            font-family: "MADE Evolve Sans";
+            font-weight: 500;
+            src: url("/src/fonts/made_evolve_sans/MADE Evolve Sans Medium.otf") format("opentype");
+        }
+        @font-face {
+            font-family: "MADE Evolve Sans";
+            font-weight: 700;
+            src: url("/src/fonts/made_evolve_sans/MADE Evolve Sans Bold.otf") format("opentype");
+        }
+
+        :root {
+        --primary-blue: #102535;
+        --primary-red: #d40000;
+        --button-color: #e3f3ff;
+        --font-primary-color: #ffffff;
+        }
+
+        body {
+            font-family: "MADE Evolve Sans", sans-serif;
+            font-style: normal;
+            color: var(--font-primary-color);
+            background-color: var(--primary-blue);
+            margin: 0px;
+        }
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            gap: 8px;
+        }
+        .banner-container {
+            padding: 84px 0px 24px 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .banner {
+            min-width: 480px;
+        }
+        .footer {
+            margin-bottom: 0px;
+        }
+        .banner-title {
+            font-weight: 700;
+            font-size: 67px;
+            line-height: 67px;
+            max-width: 482px;
+            margin: 0px 0px 56px 0px;
+        }
+        .banner-sub-title {
+            font-weight: 400;
+            font-size: 29px;
+            line-height: 33px;
+            max-width: 420px;
+            margin: 0px 0px 56px 0px;
+        }
+        .banner-button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 420px;
+            margin-bottom: 24px;
+        }
+        .banner-button {
+            background-color: var(--button-color);
+            padding: 24px;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            line-height: 24px;
+            text-decoration: none;
+            gap: 24px;
+            transition: ease-in-out 300ms background-color;
+        }
+        .banner-button:hover {
+            background-color: #b5f5ff;
+        }
+        .banner-button :nth-child(2){
+            flex-grow: 1;
+        }
+        .footer-logo-container {
+            display: flex;
+            gap: 48px;
+            align-items: end;
+        }
+        .content-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: end;
+            background-image: linear-gradient(90deg, transparent 55%, var(--primary-red) 55%);
+            background-position-x: -1px;
+            background-position-y: 74vh;
+            background-repeat: no-repeat;
+        }
+        .content-container > .image-holder {
+            background-color: var(--primary-blue);
+            -webkit-mask-image: url('/src/banners/Base_Background_Image.svg');
+            mask-image: url('/src/banners/Base_Background_Image.svg');
+            mask-repeat: no-repeat;
+            mask-position: 100%;
+            width: 100%;
+            height: 100%;
+            max-width: 864px;
+            min-height: 448px;
+            position: relative;
+        }
+        .content-container > .image-holder > img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            transition: linear 500ms opacity;
+            object-position: 100% 20%;
+        }
+        .content-container > .mobile-icons {
+        display: none;    
+        }
+        .content-container > .red-box {
+            display: none;
+        }
+        @media screen and (max-width: 980px) {
+            .main-container {
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .banner {
+                min-width: unset;
+            }
+            .footer {
+                display: none;
+            }
+            .banner-container {
+                padding: 40px 24px 0px 24px;
+                z-index: 2;
+            }
+            .banner-title {
+                font-weight: 700;
+                font-size: 42px;
+                line-height: 46.2px;
+                max-width: 325px;
+                margin: 0px 0px 24px 0px;
+            }
+            .banner-sub-title {
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                max-width: 325px;
+                margin: 0px 0px 24px 0px;
+            }
+            .banner-button-container {
+                margin-bottom: -58px;
+            }
+            .banner-button {
+                padding: 19px 16px;
+                font-size: 16px;
+                line-height: 19.2px;
+                gap: 16px;
+            }
+            .banner-button > span:first-child > img {
+                height: 22px;
+            }
+            .banner-button > span:last-child > img {
+                height: 20px;
+            }
+            .content-container {
+                z-index: 1;
+                position: relative;
+                align-items: end;
+                height: 455px;
+                background-image: unset;
+            }
+            .content-container > .image-holder {
+                min-height: unset;
+                max-width: 100vw;
+                mask-position: 100% 100%;
+                mask-size: cover;
+            }
+            .content-container > .mobile-icons {
+                display: flex;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                justify-content: space-between;
+                padding: 0px 12px 12px;
+                align-items: end;
+            }
+            .content-container > .mobile-icons > img:first-child {
+                height: 37px;
+            }
+            .content-container > .mobile-icons > img:last-child {
+                height: 21px;
+            }
+            .content-container > .red-box {
+                display: block;
+                background-color: var(--primary-red);
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                left: 55%;
+                top: 0px;
+            }
+        }
+    </style>
+    <body>
+        <div class="main-container">
+            <div class="banner-container">
+                <div class="banner">
+                    <h1 class="banner-title">
+                        Adelaide Health Simulation
+                    </h1>
+                    <h2 class="banner-sub-title">
+                        Connect with our digital and social platforms.
+                    </h2>
+                    <div class="banner-button-container">
+                        <a class="banner-button" href="https://health.adelaide.edu.au/engage-with-us/facilities-services/adelaide-health-simulation">
+                            <span><img src="/src/logos/Partner_Logo_1.svg" alt="Partner Logo"></span>
+                            <span>Visit our website</span>
+                            <span><img src="/src/logos/link_out.svg" alt="Link"></span>
+                        </a>
+                        <a class="banner-button" href="https://www.linkedin.com/company/adelaide-health-simulation">
+                            <span><img src="/src/logos/Partner_Logo_2.svg" alt="Partner Logo"></span>
+                            <span>Connect via LinkedIn</span>
+                            <span><img src="/src/logos/link_out.svg" alt="Link"></span>
+                        </a>
+                        <a class="banner-button" href="https://simulation.adelaide.edu.au/ui2/login">
+                            <span><img src="/src/logos/Partner_Logo_3.svg" alt="Partner Logo"></span>
+                            <span>Log in to SimCapture</span>
+                            <span><img src="/src/logos/link_out.svg" alt="Link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="footer-logo-container">
+                        <img src="/src/logos/Make_History_Logo.svg" alt="Make History Logo">
+                        <img src="/src/logos/UoA_Logo.svg" alt="UoA Logo">
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="red-box"></div>
+                <div class="image-holder">
+                    <img src="/src/banners/optimized/AHS_HERO_1490_FINAL.jpg" alt="Banner Image 1" class="banner-img" id="banner-img-1">
+                    <img src="/src/banners/optimized/AHS_HERO_1874_FINAL.jpg" alt="Banner Image 2" class="banner-img" id="banner-img-2" style="opacity: 0;">
+                    <img src="/src/banners/optimized/AHS_HERO_1688_FINAL.jpg" alt="Banner Image 3" class="banner-img" id="banner-img-3" style="opacity: 0;">
+                    <img src="/src/banners/optimized/AHS_HERO_0171_FINAL.jpg" alt="Banner Image 4" class="banner-img" id="banner-img-4" style="opacity: 0;">
+                </div>
+                <div class="mobile-icons">
+                    <img src="/src/logos/UoA_Logo.svg" alt="UoA Logo">
+                    <img src="/src/logos/Make_History_Logo.svg" alt="Make History Logo">
+                </div>
+            </div>
+        </div>
+        <script>
+            const intervalInMs = 3000;
+            setTimeout(() => {
+                const totalImages = document.querySelectorAll('.banner-img').length;
+                let currentSlide = 1;
+                setInterval(() => {
+                    document.getElementById(`banner-img-${currentSlide}`).style.opacity = "0";
+                    document.getElementById(`banner-img-${currentSlide < totalImages ? currentSlide + 1 : 1}`).style.opacity = "1";
+                    currentSlide = currentSlide < totalImages ? currentSlide + 1 : 1;
+                }, intervalInMs)
+            }, intervalInMs);
+        </script>
+    </body>
+</html>
