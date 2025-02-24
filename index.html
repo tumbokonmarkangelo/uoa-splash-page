@@ -32,9 +32,11 @@
 
         :root {
         --primary-blue: #102535;
+        --secondary-blue: #005a9c;
         --primary-red: #d40000;
         --button-color: #e3f3ff;
         --font-primary-color: #ffffff;
+        --icon-primary-color: #1779BA;
         }
 
         body {
@@ -100,6 +102,13 @@
         .banner-button :nth-child(2){
             flex-grow: 1;
         }
+        .banner-button > span:last-child > svg {
+            color: var(--icon-primary-color);
+            font-size: 24px;
+        }
+        .banner-button > span:last-child > svg * {
+            fill: currentColor;
+        }
         .footer-logo-container {
             display: flex;
             gap: 48px;
@@ -109,15 +118,28 @@
             flex-grow: 1;
             display: flex;
             justify-content: end;
-            background-image: linear-gradient(90deg, transparent 55%, var(--primary-red) 55%);
-            background-position-x: -1px;
-            background-position-y: 74vh;
+            position: relative;
+            /* background-image: linear-gradient(90deg, transparent calc(53.6% - 50px), var(--primary-red) 0%);
+            background-repeat: no-repeat; */
+        }
+        .content-container > .bg-box {
+            display: block;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            /* left: 0px; */
+            top: 0px;
+            max-width: 864px;
+            width: 100%;
+            background-image: url('/src/banners/Base_Background_Image_base_red.svg'), linear-gradient(90deg, transparent 45.4%, var(--primary-red) 0%);
+            background-size: cover;
+            background-position: calc(100% - 50px) 100%, 100% 100%;
             background-repeat: no-repeat;
         }
         .content-container > .image-holder {
             background-color: var(--primary-blue);
-            -webkit-mask-image: url('/src/banners/Base_Background_Image.svg');
-            mask-image: url('/src/banners/Base_Background_Image.svg');
+            -webkit-mask-image: url('/src/banners/Base_Background_Image_base.svg');
+            mask-image: url('/src/banners/Base_Background_Image_base.svg');
             mask-repeat: no-repeat;
             mask-position: 100%;
             width: 100%;
@@ -125,6 +147,8 @@
             max-width: 864px;
             min-height: 448px;
             position: relative;
+            mask-size: cover;
+            mask-position: calc(100% - 50px) 100%;
         }
         .content-container > .image-holder > img {
             object-fit: cover;
@@ -139,65 +163,94 @@
             object-position: 100% 20%;
         }
         .content-container > .mobile-icons {
-        display: none;    
+            display: none;    
         }
-        .content-container > .red-box {
-            display: none;
-        }
-        @media screen and (max-width: 980px) {
+        @media screen and (max-width: 900px) {
             .main-container {
                 flex-direction: column;
                 justify-content: space-between;
+                gap: 14px;
             }
             .banner {
                 min-width: unset;
+                order: 2;
             }
             .footer {
-                display: none;
+                order: 1;
+            }
+            .footer-logo-container {
+                justify-content: space-between;
+            }
+            .footer-logo-container > img:first-child {
+                height: 42px;
+            }
+            .footer-logo-container > img:last-child {
+                height: 55px;
             }
             .banner-container {
-                padding: 40px 24px 0px 24px;
+                padding: 28px 20px 0px 20px;
                 z-index: 2;
+                gap: 52px;
             }
             .banner-title {
                 font-weight: 700;
-                font-size: 42px;
-                line-height: 46.2px;
-                max-width: 325px;
-                margin: 0px 0px 24px 0px;
+                font-size: 35px;
+                line-height: 41.58px;
+                max-width: unset;
+                margin: 0px 0px 15px 0px;
+                text-align: center;
             }
             .banner-sub-title {
                 font-weight: 500;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 24px;
-                max-width: 325px;
-                margin: 0px 0px 24px 0px;
+                max-width: unset;
+                margin: 0px 0px 15px 0px;
+                text-align: center;
             }
             .banner-button-container {
-                margin-bottom: -58px;
+                gap: 0px;
+                margin: 0px auto 0px;
             }
             .banner-button {
-                padding: 19px 16px;
+                padding: 0px;
+                height: 42px;
                 font-size: 16px;
                 line-height: 19.2px;
                 gap: 16px;
+                background-color: transparent;
+                color: var(--font-primary-color);
+            }
+            .banner-button:hover {
+                color: var(--primary-blue);
+                margin: 0 -20px;
+                padding: 0 20px;
+            }
+            .banner-button:hover > span:last-child > svg {
+                color: var(--icon-primary-color);
             }
             .banner-button > span:first-child > img {
                 height: 22px;
             }
             .banner-button > span:last-child > img {
                 height: 20px;
+                color: var(--font-primary-color);
+            }
+            .banner-button > span:last-child > svg {
+                color: var(--font-primary-color);
+                font-size: 20px;
             }
             .content-container {
                 z-index: 1;
-                position: relative;
                 align-items: end;
-                height: 455px;
+                height: 120vw;
                 background-image: unset;
             }
             .content-container > .image-holder {
                 min-height: unset;
                 max-width: 100vw;
+                -webkit-mask-image: url('/src/banners/Base_Background_Image_mb.svg');
+                mask-image: url('/src/banners/Base_Background_Image_mb.svg');
                 mask-position: 100% 100%;
                 mask-size: cover;
             }
@@ -217,14 +270,28 @@
             .content-container > .mobile-icons > img:last-child {
                 height: 21px;
             }
-            .content-container > .red-box {
+            .content-container > .bg-box {
                 display: block;
-                background-color: var(--primary-red);
+                background-image: linear-gradient(90deg, var(--secondary-blue) 40.3%, var(--primary-red) 0%);
                 position: absolute;
                 bottom: 0px;
                 right: 0px;
-                left: 55%;
+                left: 0px;
                 top: 0px;
+                background-position: 100% 100%;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .banner-title {
+                max-width: 335px;
+                text-align: left;
+            }
+            .banner-sub-title {
+                max-width: 335px;
+                text-align: left;
+            }
+            .banner-button-container {
+                margin: unset;
             }
         }
     </style>
@@ -242,17 +309,29 @@
                         <a class="banner-button" href="https://health.adelaide.edu.au/engage-with-us/facilities-services/adelaide-health-simulation">
                             <span><img src="/src/logos/Partner_Logo_1.svg" alt="Partner Logo"></span>
                             <span>Visit our website</span>
-                            <span><img src="/src/logos/link_out.svg" alt="Link"></span>
+                            <span>
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3125 14.5C16.7949 14.5 16.375 14.9199 16.375 15.4375V19.8125C16.375 19.9848 16.2348 20.125 16.0625 20.125H4.1875C4.01523 20.125 3.875 19.9848 3.875 19.8125V7.9375C3.875 7.76523 4.01523 7.625 4.1875 7.625H8.5625C9.08203 7.625 9.5 7.20703 9.5 6.6875C9.5 6.16797 9.08203 5.75 8.5625 5.75H4.1875C2.98164 5.75 2 6.73047 2 7.9375V19.8125C2 21.0195 2.98164 22 4.1875 22H16.0625C17.2688 22 18.25 21.0187 18.25 19.8125V15.4375C18.25 14.9219 17.832 14.5 17.3125 14.5ZM21.0625 2H14.5C13.9824 2 13.5625 2.41992 13.5625 2.9375C13.5625 3.45508 13.9844 3.875 14.5 3.875H18.8008L9.14844 13.5234C8.78203 13.8898 8.78203 14.4828 9.14844 14.8492C9.33203 15.0352 9.57031 15.125 9.8125 15.125C10.0547 15.125 10.2922 15.0336 10.4754 14.8504L20.125 5.20078V9.5C20.125 10.0176 20.5449 10.4375 21.0625 10.4375C21.5801 10.4375 22 10.0195 22 9.5V2.9375C22 2.41992 21.582 2 21.0625 2Z" fill="#1779BA"/>
+                                </svg>
+                            </span>
                         </a>
                         <a class="banner-button" href="https://www.linkedin.com/company/adelaide-health-simulation">
                             <span><img src="/src/logos/Partner_Logo_2.svg" alt="Partner Logo"></span>
                             <span>Connect via LinkedIn</span>
-                            <span><img src="/src/logos/link_out.svg" alt="Link"></span>
+                            <span>
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3125 14.5C16.7949 14.5 16.375 14.9199 16.375 15.4375V19.8125C16.375 19.9848 16.2348 20.125 16.0625 20.125H4.1875C4.01523 20.125 3.875 19.9848 3.875 19.8125V7.9375C3.875 7.76523 4.01523 7.625 4.1875 7.625H8.5625C9.08203 7.625 9.5 7.20703 9.5 6.6875C9.5 6.16797 9.08203 5.75 8.5625 5.75H4.1875C2.98164 5.75 2 6.73047 2 7.9375V19.8125C2 21.0195 2.98164 22 4.1875 22H16.0625C17.2688 22 18.25 21.0187 18.25 19.8125V15.4375C18.25 14.9219 17.832 14.5 17.3125 14.5ZM21.0625 2H14.5C13.9824 2 13.5625 2.41992 13.5625 2.9375C13.5625 3.45508 13.9844 3.875 14.5 3.875H18.8008L9.14844 13.5234C8.78203 13.8898 8.78203 14.4828 9.14844 14.8492C9.33203 15.0352 9.57031 15.125 9.8125 15.125C10.0547 15.125 10.2922 15.0336 10.4754 14.8504L20.125 5.20078V9.5C20.125 10.0176 20.5449 10.4375 21.0625 10.4375C21.5801 10.4375 22 10.0195 22 9.5V2.9375C22 2.41992 21.582 2 21.0625 2Z" fill="#1779BA"/>
+                                </svg>
+                            </span>
                         </a>
                         <a class="banner-button" href="https://simulation.adelaide.edu.au/ui2/login">
                             <span><img src="/src/logos/Partner_Logo_3.svg" alt="Partner Logo"></span>
                             <span>Log in to SimCapture</span>
-                            <span><img src="/src/logos/link_out.svg" alt="Link"></span>
+                            <span>
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3125 14.5C16.7949 14.5 16.375 14.9199 16.375 15.4375V19.8125C16.375 19.9848 16.2348 20.125 16.0625 20.125H4.1875C4.01523 20.125 3.875 19.9848 3.875 19.8125V7.9375C3.875 7.76523 4.01523 7.625 4.1875 7.625H8.5625C9.08203 7.625 9.5 7.20703 9.5 6.6875C9.5 6.16797 9.08203 5.75 8.5625 5.75H4.1875C2.98164 5.75 2 6.73047 2 7.9375V19.8125C2 21.0195 2.98164 22 4.1875 22H16.0625C17.2688 22 18.25 21.0187 18.25 19.8125V15.4375C18.25 14.9219 17.832 14.5 17.3125 14.5ZM21.0625 2H14.5C13.9824 2 13.5625 2.41992 13.5625 2.9375C13.5625 3.45508 13.9844 3.875 14.5 3.875H18.8008L9.14844 13.5234C8.78203 13.8898 8.78203 14.4828 9.14844 14.8492C9.33203 15.0352 9.57031 15.125 9.8125 15.125C10.0547 15.125 10.2922 15.0336 10.4754 14.8504L20.125 5.20078V9.5C20.125 10.0176 20.5449 10.4375 21.0625 10.4375C21.5801 10.4375 22 10.0195 22 9.5V2.9375C22 2.41992 21.582 2 21.0625 2Z" fill="#1779BA"/>
+                                </svg>
+                            </span>
                         </a>
                     </div>
                 </div>
@@ -264,17 +343,17 @@
                 </div>
             </div>
             <div class="content-container">
-                <div class="red-box"></div>
+                <div class="bg-box"></div>
                 <div class="image-holder">
                     <img src="/src/banners/optimized/AHS_HERO_1490_FINAL.jpg" alt="Banner Image 1" class="banner-img" id="banner-img-1">
                     <img src="/src/banners/optimized/AHS_HERO_1874_FINAL.jpg" alt="Banner Image 2" class="banner-img" id="banner-img-2" style="opacity: 0;">
                     <img src="/src/banners/optimized/AHS_HERO_1688_FINAL.jpg" alt="Banner Image 3" class="banner-img" id="banner-img-3" style="opacity: 0;">
                     <img src="/src/banners/optimized/AHS_HERO_0171_FINAL.jpg" alt="Banner Image 4" class="banner-img" id="banner-img-4" style="opacity: 0;">
                 </div>
-                <div class="mobile-icons">
+                <!-- <div class="mobile-icons">
                     <img src="/src/logos/UoA_Logo.svg" alt="UoA Logo">
                     <img src="/src/logos/Make_History_Logo.svg" alt="Make History Logo">
-                </div>
+                </div> -->
             </div>
         </div>
         <script>

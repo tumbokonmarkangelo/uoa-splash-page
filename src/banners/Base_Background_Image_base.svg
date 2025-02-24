@@ -1,0 +1,12 @@
+<svg width="1176" height="1422" viewBox="0 0 1176 1422" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M0 545.011V0H1176V545.011C1173.48 962.243 979.536 1255.46 599.122 1416.5L588.964 1420.85L588.002 1421.18L587.036 1420.85L576.878 1416.5C196.464 1255.46 2.52135 962.243 0 545.011Z" fill="#102535"/>
+<defs>
+<pattern id="pattern0_39_8743" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_39_8743" transform="matrix(0.000394924 0 0 0.000326793 -0.110693 -0.00269011)"/>
+</pattern>
+<linearGradient id="paint0_linear_39_8743" x1="604" y1="1131" x2="604" y2="217" gradientUnits="userSpaceOnUse">
+<stop stop-color="#102535" stop-opacity="0"/>
+<stop offset="1" stop-color="#102535"/>
+</linearGradient>
+</defs>
+</svg>
